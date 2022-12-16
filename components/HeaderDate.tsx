@@ -16,7 +16,7 @@ const HeaderDate = () => {
   const day = new Date().getDay();
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.day}>{weekMap[day].toUpperCase()}</Text>
     </View>
   );
