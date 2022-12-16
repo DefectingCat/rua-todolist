@@ -2,7 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-        // Path alias config
-    "baseUrl": ".",
+    // Path alias config
+    "baseUrl": "."
   }
 }
