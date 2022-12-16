@@ -13,7 +13,7 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
-import useColorScheme from 'hooks/useColorScheme';
+import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from 'screens/ModalScreen';
 import NotFoundScreen from 'screens/NotFoundScreen';
 import TabOneScreen from 'screens/HomeScreen';
@@ -22,9 +22,10 @@ import {
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
-} from '../types';
+} from 'types';
 import LinkingConfiguration from 'navigation/LinkingConfiguration';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import HeaderDate from '../components/HeaderDate';
 
 export default function Navigation({
   colorScheme,
@@ -78,24 +79,26 @@ function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <MBottomTab.Navigator initialRouteName="Home">
-      <MBottomTab.Screen
+    <BottomTab.Navigator initialRouteName="Home">
+      <BottomTab.Screen
         name="Home"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Home',
+          headerTitle: (props) => <HeaderDate />,
           tabBarIcon: ({ color }) => <FeatherIcon name="home" color={color} />,
         })}
       />
-      <MBottomTab.Screen
+      <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
         options={{
           // title: "Tab Two",
+          headerTitle: '',
           tabBarIcon: ({ color }) => <FeatherIcon name="code" color={color} />,
         }}
       />
-    </MBottomTab.Navigator>
+    </BottomTab.Navigator>
   );
 }
 

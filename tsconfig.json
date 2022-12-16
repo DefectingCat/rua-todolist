@@ -3,6 +3,9 @@
   "compilerOptions": {
     "strict": true,
     // Path alias config
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      ".": ["."],
+    }
   }
 }
