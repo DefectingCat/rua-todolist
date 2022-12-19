@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import { View } from 'components/Themed';
 import { RootTabScreenProps } from '../types';
 import Empty from 'components/HomeScreen/Empty';
@@ -7,6 +7,9 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   return (
     <View style={styles.container}>
       <Empty />
+      <View>
+        <Button title={'test'} />
+      </View>
     </View>
   );
 }

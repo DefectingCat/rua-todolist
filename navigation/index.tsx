@@ -26,6 +26,8 @@ import {
 import LinkingConfiguration from 'navigation/LinkingConfiguration';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import HeaderDate from '../components/HeaderDate';
+import { useAppSelector } from '../hooks/useStore';
+import { selectMainColor } from 'features/theme/themeSlice';
 
 export default function Navigation({
   colorScheme,
@@ -77,6 +79,7 @@ const MBottomTab = createMaterialBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
+  const mainColor = useAppSelector(selectMainColor);
 
   return (
     <BottomTab.Navigator initialRouteName="Home">
@@ -86,6 +89,9 @@ function BottomTabNavigator() {
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Home',
           headerTitle: (props) => <HeaderDate />,
+          headerStyle: {
+            backgroundColor: mainColor,
+          },
           tabBarIcon: ({ color }) => <FeatherIcon name="home" color={color} />,
         })}
       />
