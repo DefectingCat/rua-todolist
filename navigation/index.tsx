@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   DarkTheme,
@@ -12,7 +12,7 @@ import {
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
+import { ColorSchemeName, StyleProp, TextStyle } from 'react-native';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from 'screens/ModalScreen';
 import NotFoundScreen from 'screens/NotFoundScreen';
@@ -25,9 +25,11 @@ import {
 } from 'types';
 import LinkingConfiguration from 'navigation/LinkingConfiguration';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import HeaderDate from '../components/HeaderDate';
+import HeaderDate from 'components/navigation/HeaderDate';
 import { useAppSelector } from '../hooks/useStore';
 import { selectMainColor } from 'features/theme/themeSlice';
+import HeaderRight from 'components/navigation/HeaderRight';
+import FeatherIcon from 'components/navigation/FeatherIcon';
 
 export default function Navigation({
   colorScheme,
@@ -64,7 +66,7 @@ function RootNavigator() {
         options={{ title: 'Oops!' }}
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen options={{}} name="Modal" component={ModalScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -77,7 +79,7 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const MBottomTab = createMaterialBottomTabNavigator<RootTabParamList>();
 
-const tabBarStyle = {
+const tabBarStyle: StyleProp<TextStyle> = {
   paddingBottom: 4,
   borderTopStartRadius: 12,
   borderTopEndRadius: 12,
@@ -96,9 +98,12 @@ function BottomTabNavigator() {
           headerTitle: (props) => <HeaderDate />,
           headerStyle: {
             backgroundColor: mainColor,
+            borderWidth: 0,
+            shadowOpacity: 0,
           },
           tabBarIcon: ({ color }) => <FeatherIcon name="home" color={color} />,
           tabBarStyle,
+          headerRight: () => <HeaderRight navigation={navigation} />,
         })}
       />
       <BottomTab.Screen
@@ -111,17 +116,6 @@ function BottomTabNavigator() {
         }}
       />
     </BottomTab.Navigator>
-  );
-}
-
-function FeatherIcon(props: {
-  name: React.ComponentProps<typeof Feather>['name'];
-  color?: string;
-}) {
-  return (
-    <>
-      <Feather size={20} {...props} />
-    </>
   );
 }
 

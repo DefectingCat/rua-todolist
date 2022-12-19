@@ -1,7 +1,7 @@
-import { Text, View } from './Themed';
+import { Text, View } from '../Themed';
 import { StyleSheet } from 'react-native';
-import { useAppSelector } from '../hooks/useStore';
-import { selectHeader } from '../features/theme/themeSlice';
+import { useAppSelector } from '../../hooks/useStore';
+import { selectHeader } from '../../features/theme/themeSlice';
 
 const weekMap = [
   'Err',
