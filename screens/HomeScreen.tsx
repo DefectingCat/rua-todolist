@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { Text, View } from 'components/Themed';
+import { View } from 'components/Themed';
 import { RootTabScreenProps } from '../types';
-import EditScreenInfo from 'components/EditScreenInfo';
 import Empty from 'components/HomeScreen/Empty';
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
