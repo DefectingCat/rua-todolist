@@ -77,6 +77,11 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const MBottomTab = createMaterialBottomTabNavigator<RootTabParamList>();
 
+const tabBarStyle = {
+  paddingBottom: 4,
+  borderTopStartRadius: 12,
+  borderTopEndRadius: 12,
+};
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
   const mainColor = useAppSelector(selectMainColor);
@@ -93,16 +98,16 @@ function BottomTabNavigator() {
             backgroundColor: mainColor,
           },
           tabBarIcon: ({ color }) => <FeatherIcon name="home" color={color} />,
-          tabBarStyle: {},
+          tabBarStyle,
         })}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          // title: "Tab Two",
-          headerTitle: '',
           tabBarIcon: ({ color }) => <FeatherIcon name="code" color={color} />,
+          headerShown: false,
+          tabBarStyle,
         }}
       />
     </BottomTab.Navigator>
