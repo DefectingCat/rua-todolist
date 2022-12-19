@@ -93,6 +93,7 @@ function BottomTabNavigator() {
             backgroundColor: mainColor,
           },
           tabBarIcon: ({ color }) => <FeatherIcon name="home" color={color} />,
+          tabBarStyle: {},
         })}
       />
       <BottomTab.Screen
@@ -114,13 +115,7 @@ function FeatherIcon(props: {
 }) {
   return (
     <>
-      <Feather
-        style={{
-          paddingTop: 2,
-        }}
-        size={20}
-        {...props}
-      />
+      <Feather size={20} {...props} />
     </>
   );
 }
